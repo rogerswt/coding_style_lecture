@@ -6,17 +6,17 @@ incremental: true
 <lecture>4</lecture>
 
 Creating Markdown Files
-======================================================= 
+=======================================================
 type: chapter
 
 General Idea
-======================================================= 
+=======================================================
 * A markdown file combines text and R code to generate a document or web page
 * The presentation used in this lecture is a markdown file
 * Markdown has its own language, separate from R
 
 Starting a Markdown Document
-======================================================= 
+=======================================================
 incremental: false
 Pick
 
@@ -29,7 +29,7 @@ Markdown requires that you have the knitr package installed.
 <g>fingers crossed...</g>
 
 What you will see
-======================================================= 
+=======================================================
 incremental: false
 A new markdown file will open up with some default material
 
@@ -43,22 +43,22 @@ output: word_document
 ---
 ```
 
-Delete the rest. 
+Delete the rest.
 
 You might want to save this file under some name
 
 Generating a document
-======================================================= 
+=======================================================
 incremental: false
 * click on the "Knit Word" button
-* a document will open. 
+* a document will open.
 * Change the title, and re-knit
 * Type some text under the "- - -", re-knit
 
 Basic text: bold
-======================================================= 
+=======================================================
 incremental: false
-To boldface text, enclose it between double asterisks: 
+To boldface text, enclose it between double asterisks:
 ```{r, eval=FALSE}
 This is a **boldfaced** word
 ```
@@ -67,7 +67,7 @@ _Produces:_
 This is a **boldfaced** word
 
 Basic text: italics
-======================================================= 
+=======================================================
 incremental: false
 To italicize a word, you can use single asterisks or underscores:
 
@@ -80,7 +80,7 @@ _Produces:_
 This is an _italicized_ word
 
 Basic text: bold+italics
-======================================================= 
+=======================================================
 incremental: false
 ```{r, eval=FALSE}
 This is ***both*** at the same time
@@ -91,9 +91,9 @@ _Produces:_
 This is _**both**_ at the same time
 
 Headers
-======================================================= 
+=======================================================
 incremental: false
-Lines that start with one of more #'s are headers.  Note: you need a space after the #'s 
+Lines that start with one of more #'s are headers.  Note: you need a space after the #'s
 ```{r, eval=FALSE}
 # Big Header
 ```
@@ -108,7 +108,7 @@ Lines that start with one of more #'s are headers.  Note: you need a space after
 <span style="font-size:38pt">Third level Header</span>
 
 Headers (alternative)
-======================================================= 
+=======================================================
 incremental: false
 A line that is underlined by "=" or "-" is also recognized as a header:
 ```{r, eval=FALSE}
@@ -126,7 +126,7 @@ A line that is underlined by "=" or "-" is also recognized as a header:
 <span style="font-size:45pt">Smaller Header</span>
 
 Bullet lists
-======================================================= 
+=======================================================
 incremental: false
 A line that starts with an (*) is a bullet:
 ```{r, eval=FALSE}
@@ -139,7 +139,7 @@ _Produces:_
 * Item 2
 
 A Trap
-======================================================= 
+=======================================================
 incremental: false
 You need a blank line after a paragraph
 ```{r, eval=FALSE}
@@ -156,7 +156,7 @@ This is some text
 ```
 
 Nested Bullet lists
-======================================================= 
+=======================================================
 incremental: false
 To nest them, simply indent _by at least 4 spaces_
 ```{r, eval=FALSE}
@@ -173,7 +173,7 @@ _Produces:_
 * Item 2
 
 Numbered lists
-======================================================= 
+=======================================================
 incremental: false
 A line that starts with a number followed by a period is a numbered list item:
 ```{r, eval=FALSE}
@@ -186,7 +186,7 @@ _Produces:_
 1. Item 2
 
 Nested lists
-======================================================= 
+=======================================================
 incremental: false
 ```{r, eval=FALSE}
 1. Item 1
@@ -202,37 +202,37 @@ _Produces:_
   * Item 2b
 
 Tables
-======================================================= 
+=======================================================
 incremental: false
 Creating a table is just a little more complicated:
 * Each row of the table must fit on one line
 * The columns are separated by vertical line symbols (|)
 * The first line is a header and must be underlined with dashes
 ```{r, eval=FALSE}
-Characteristic | Control | Active 
+Characteristic | Control | Active
 -------------- | ------- | ------
 Age      | 18.1  | 20.2
 Weight      | 170.5   | 168.4
 ```
 
 Tables (Continued)
-======================================================= 
+=======================================================
 incremental: false
 ```{r, eval=FALSE}
-Characteristic | Control | Active 
+Characteristic | Control | Active
 -------------- | ------- | ------
 Age      | 18.1  | 20.2
 Weight      | 170.5   | 168.4
 ```
 _Produces:_
 
-Characteristic | Control | Active 
+Characteristic | Control | Active
 ---- | ---- | ----
 Age | 18.1 | 20.2
 Weight | 170.5 | 168.4
 
 Links
-======================================================= 
+=======================================================
 incremental: false
 A link consists of text in brackets and a URL following in parentheses:
 ```{r, eval=FALSE}
@@ -243,7 +243,7 @@ _Produces:_
 Click here to go to the [Google](http://google.com) main page.
 
 Images
-======================================================= 
+=======================================================
 incremental: false
 An image works the same way, except that it is preceded by an exclamation mark (!)
 
@@ -252,7 +252,7 @@ An image works the same way, except that it is preceded by an exclamation mark (
 Note: You can also include files on your disk. Just put the path instead of a URL.
 
 Inserting R code
-======================================================= 
+=======================================================
 incremental: false
 R code is inserted by specifying a code block:
 
@@ -266,13 +266,13 @@ Note that a code chunk starts and ends with three back quotes, and
 must say "{r}" <g>lowercase r!</g>
 
 Inserting R code: Example
-======================================================= 
+=======================================================
 incremental: false
 * you can use Ctrl-Alt-i to insert a chunk of R code
 * you can use the "Chunks" menu on the right top of the editor
 
 R code chunk options
-======================================================= 
+=======================================================
 incremental: false
 You can also specify options:
 {r, options}
@@ -286,23 +286,23 @@ You can also specify options:
 For more options, see http://yihui.name/knitr/options#chunk_options
 
 Embedded R code
-======================================================= 
+=======================================================
 incremental: false
-can embed R calculations in the middle of sentences by using &#96;r  ... &#96; 
+can embed R calculations in the middle of sentences by using &#96;r  ... &#96;
 
-For example, 
+For example,
 ```{r, eval=FALSE}
-The median temperature is `r median(airquality$Temp)`. 
+The median temperature is `r median(airquality$Temp)`.
 ```
 _Produces:_
 
-The median temperature is `r median(airquality$Temp)`. 
+The median temperature is `r median(airquality$Temp)`.
 
 
 Working with Markdown
-======================================================= 
+=======================================================
 incremental: false
-Markdown files have their own environment. 
+Markdown files have their own environment.
 * You won't see the variables in the environment tab
 * The tab key won't work for your own variables and dataset
 
@@ -311,11 +311,11 @@ Work in the console, copy to the markdown file
 Take small steps, knit often
 
 Homework
-======================================================= 
+=======================================================
 type: chapter
 
 Instructions
-======================================================= 
+=======================================================
 incremental: false
 * Download the file `hwk1.Rmd` file from Blackboard. It's in the Lecture 1 folder.
 * Open it in RStudio and answer the problems (instructions are in the file). Remember: you can try code in the console.
