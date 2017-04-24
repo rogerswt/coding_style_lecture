@@ -3,7 +3,7 @@ css: rogers_rpres.css
 incremental: true
 <topic>Coding Style</topic>
 <hr>
-<lecture>4</lecture>
+<lecture>3</lecture>
 
 Coding Style Suggestions
 =======================================================
@@ -36,18 +36,23 @@ incremental: false
 File names should end in .R and, of course, be meaningful.
 
 File names cannot contain spaces (kinda obvious).  I use underscores to
-separate words within a file name.
+separate words within a file name or (upper or lower) camelCase, interchangably.
 
 Good:
 ```{r, eval=FALSE}
 calculate_CD4_subsets.R
+analysis_utils.R
+analysisUtils.R
+AnalysisUtils.R
 ```
 
 Bad:
 ```{r, eval=FALSE}
 stuff.R
 calculate CD4 subsets.R
+calculateCD4Subsets.R
 ```
+<small><g> in the latter example, camelCase is a little confusing, due to the consecutive caps ("CD")</g></small>
 
 Variable Names
 =======================================================
@@ -111,17 +116,17 @@ Using this scheme, variable and function names cannot be confused.
 
 Good:
 ```{r, eval=FALSE}
-n_cd4_events = Count_CD4_in_flowset(fs=my_flowset)
+n_cd4_events = Count_CD4_in_flowset(fs = my_flowset)
 ```
 
 Ok:
 ```{r, eval=FALSE}
-nEvents = CountEventsInFlowset(fs=my_flowset)
+nEvents = CountEventsInFlowset(fs = my_flowset)
 ```
 
 Bad:
 ```{r, eval=FALSE}
-n_cd4_events = count_CD4_in_flowset(fs=my_flowset)
+n_cd4_events = count_CD4_in_flowset(fs = my_flowset)
 N_cd4_events = 10000
 ```
 <small>
@@ -133,13 +138,13 @@ Variable Names
 =======================================================
 incremental: false
 
-Where possible, avoid using names of existing functions and variables. This will
+Where possible, avoid using names of existing functions and variables. It will work, but it will
 cause confusion for the readers of your code.
 
 ```{r, eval=FALSE}
 T <- FALSE
 c <- 10
-mean <- function(x) sum(x)
+mean <- sum(x) / length(x)
 ```
 
 <g>Hint: if in doubt, try typing the function or variable name in your console
@@ -171,7 +176,8 @@ Bad:
 average<-mean(feet/12+inches,na.rm=TRUE)
 ```
 
-Exception: you can omit spacing around '=' in function _definition_.
+Exception: you can omit spacing around '=' in parameter default specifications
+in function _definitions_.
 ```{r, eval=FALSE}
 MyFunc = function (coefficient, exponent=6)
 ```
@@ -240,7 +246,8 @@ followed by a new line.
 A closing curly brace should __always__ go on its own
 line, unless it’s followed by `else`.
 
-Always indent the code inside curly braces.
+__Always__ indent the code inside curly braces.
+
 
 Curly Braces
 =======================================================
@@ -249,21 +256,29 @@ incremental: false
 Good:
 ```{r, eval=FALSE}
 if (y < 0 && debug) {
-  message("Y is negative")
+  message("y is negative")
 }
+```
+Bad:
+```{r, eval=FALSE}
+if (y < 0 && debug)
+message("Y is negative")
+```
 
+Curly Braces
+=======================================================
+incremental: false
+
+Good:
+```{r, eval=FALSE}
 if (y == 0) {
   log(x)
 } else {
   y ^ x
 }
 ```
-
 Bad:
 ```{r, eval=FALSE}
-if (y < 0 && debug)
-message("Y is negative")
-
 if (y == 0) {
   log(x)
 }
@@ -271,6 +286,7 @@ else {
   y ^ x
 }
 ```
+
 
 
 Curly Braces

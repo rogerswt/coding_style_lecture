@@ -3,7 +3,7 @@ css: rogers_rpres.css
 incremental: true
 <topic>R Coding Basics</topic>
 <hr>
-<lecture>4</lecture>
+<lecture>3</lecture>
 
 R Syntax 101
 =======================================================
@@ -68,7 +68,7 @@ x = 1 + 2 +
 ```
 
 ```{r, eval=FALSE}
-# Good
+# Ok
 x = (1 + 2
     + 3)
 ```
@@ -161,7 +161,8 @@ Pick Tools > Global Options > General
 * Set: **Save workpace to .RData on exit** to "Never"
 
 <g>You can also set the appearance to suit your taste, and adjust code
-editing, display, and tools to help you write correct code.</g>
+editing, display, and code editing tools.  More on this when
+we discuss style, and how to let RStudio help you to write nice code.</g>
 
 The RStudio Console
 =======================================================
@@ -214,7 +215,7 @@ incremental:false
 * Type `age` and hit tab (or Enter)
 
 <g>The RStudio editor and console searche your Environment for matches, using
-(by default) 3 or morecharacters.</g>
+(by default) 3 or more characters.</g>
 
 More console features
 =======================================================
@@ -268,7 +269,9 @@ Try
 myCars = cars
 ```
 Check the global environment. Notice that you can expand
-and browse. <g>And yes, that's how you copy a dataset</g>
+and browse.
+
+<g>And yes, that's how you copy a dataset</g>
 
 More plotting
 =======================================================
