@@ -1,0 +1,45 @@
+---
+title: "Homework Assignment 1"
+author: "Wade Rogers"
+date: "April 24, 2017"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Assignment
+
+1. Create a new Rmarkdown document
+1. Select an FCS file of your choice (preferably of your own data)
+1. Create a section entitled *"Background"*.
+1. Provide a brief description of the data (_e.g._ what research question it aims to answer,
+what species, which markers, etc.)
+1. Start a new section entitled *"Code and Data"*
+1. Create a function that
+    a. Accepts as an argument the name of a file
+    a. Reads the file into a <code>flowFrame</code>
+    a. Compensates it using the SPILL matrix embedded in the FCS header
+    a. Performs a biexponential transformation
+    a. Returns the resulting compensated and transformed <code>flowFrame</code>
+1. Create a script that
+    a. Source's the above function 
+    q. Calls the above function
+    a. Prints the flowFrame (by just mentioning its name)
+    a. plots any 4 bivariate projections that you choose, 
+    in a 2 x 2 plot area, and sets reasonable margins.  Hint: 
+    ```{r eval=FALSE}
+    par(mfrow = c(2, 2), mar = c(4, 4, .1, .1))
+    ```
+    
+
+Execute your code in a code chunk of your Rmarkdown document, with echo=true so that the
+script code will be displayed.
+
+Finally, Knit your document (Word if you have it on your computer, HTML or PDF if you do not), and
+email the resulting document to me.
+
+
