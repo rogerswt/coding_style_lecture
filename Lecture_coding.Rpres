@@ -1,0 +1,634 @@
+========================================================
+css: rogers_rpres.css
+incremental: true
+<topic>R Coding Basics</topic>
+<hr>
+<lecture>4</lecture>
+
+R Syntax 101
+=======================================================
+type: chapter
+
+Comments
+=======================================================
+incremental: false
+The # symbol indicates the beginning of a comment.
+```{r, eval=FALSE}
+# This is a comment
+x = 1  # This is another comment
+```
+There are no multi-line comments (/* ... */)
+
+Spaces and blank lines
+=======================================================
+They don't matter
+```{r, eval=FALSE}
+# These are equivalent
+x=1
+x = 1
+
+x = 1
+```
+... except in obvious places
+```{r, eval=FALSE}
+name = 'Bill'
+name = 'Bi ll'
+na me = 'Bill'
+```
+
+Semicolons
+=======================================================
+They're optional
+```{r, eval=FALSE}
+# These are equivalent
+x = 1
+x = 1;
+```
+
+Unless you have multiple statements per line:
+```{r, eval=FALSE}
+x = 1;  y = 2
+```
+
+But this is rarely a good idea
+
+Long lines
+=======================================================
+A statement can spill over multiple lines as long as it's clear that the statement is incomplete.
+```{r, eval=FALSE}
+# Good
+x = 1 + 2 +
+    3
+```
+
+```{r, eval=FALSE}
+# Bad
+ x = 1 + 2
+     + 3
+```
+
+```{r, eval=FALSE}
+# Good
+x = (1 + 2
+    + 3)
+```
+
+
+Backslashes (\)
+=======================================================
+These have special meanings (more on this later). For file names, use forward slashes (/) instead. If you must use them, you have to double them:
+```{r, eval=FALSE}
+# Good
+C:/My Documents/test.csv
+```
+```{r, eval=FALSE}
+# Bad
+C:\My Documents\test.csv
+```
+```{r, eval=FALSE}
+# Ugly (but acceptable)
+C:\\My Documents\\test.csv
+```
+
+Capitalization
+=======================================================
+R is *case sensitive*
+```{r, eval=FALSE}
+# Two different variables
+age = 18
+Age = 18
+```
+This applies to everything, including functions
+```{r, eval=FALSE}
+sqrt(4)     # equal 2
+Sqrt(4)     # gives an error
+```
+
+Get in the habit of capitalizing consistently (more on this when we get
+to stylistic guidelines)
+
+
+Quotes
+=======================================================
+There are _no_ differences between single and double quotes in R.
+
+```{r, eval=FALSE}
+# The following are equivalent:
+subjectId = 'MM-0001'
+subjectId = "MM-0001"
+```
+Sometimes one or the other is more convenient:
+```{r, eval=FALSE}
+label = "Mother's age"
+```
+The way around this is to "escape" the quote:
+```{r, eval=FALSE}
+label = 'Mother\'s age'
+```
+<g>remember the special backslashes?</g>
+
+The RStudio Desktop
+=======================================================
+type: chapter
+
+Start RStudio
+=======================================================
+incremental: false
+Launch RStudio (not R!). You should have a desktop (or dock) icon like this one
+
+![plus icon](img/RStudioIcon.png)
+
+or use the start menu
+
+R Studio tabs
+=======================================================
+incremental:false
+* Console _for quick interactive work_
+* Editor _for writing programs_ <g>may be missing if this is the first time you're using RStudio</g>
+* Environment _currently defined variables_
+* History _tracks commands issued so far_
+* Files _manipulate files_
+* Plots _this is where plots appear_
+* Packages _manage your R add-ons_
+* Help _information about R things_
+* others...
+
+Configuring Rstudio
+=======================================================
+incremental:false
+Pick Tools > Global Options > General
+* Uncheck: **restore .RData into workspace at startup**
+* Set: **Save workpace to .RData on exit** to "Never"
+
+<g>You can also set the appearance to suit your taste, and adjust code
+editing, display, and tools to help you write correct code.</g>
+
+The RStudio Console
+=======================================================
+type: chapter
+
+Working in the Console
+=======================================================
+Try entering some expressions
+```{r, eval=FALSE}
+1 + 1
+(2+3)/2
+```
+What is the "[1]"? Try
+```{r, eval=FALSE}
+runif(12)
+```
+
+Creating variables
+=======================================================
+Assign some variables
+```{r, eval=FALSE}
+x = 1
+y = 2
+```
+Look at the environment tab: do you see the variables?
+
+Look at the history tab: do you see your commands?
+
+Showing values in the console
+=======================================================
+incremental:false
+Try
+```{r, eval=FALSE}
+x
+```
+or
+```{r, eval=FALSE}
+y
+```
+<g>In general, entering the name of something all by
+itself causes its contents to be displayed.</g>
+
+Auto-completion and help
+=======================================================
+incremental:false
+
+* Type `sqr` and hit tab (or Enter)
+* Type a left paren: note the automatic parenthesis
+* Assign `ageAtScreening = 19`
+* Type `age` and hit tab (or Enter)
+
+<g>The RStudio editor and console searche your Environment for matches, using
+(by default) 3 or morecharacters.</g>
+
+More console features
+=======================================================
+* Try using the arrow keys
+* Change the value of `ageAtScreening` to 18 using the arrow keys
+* To clear the console, use Edit > Clear Console or Ctrl-L
+
+Plotting
+=======================================================
+incremental:false
+Try
+```{r, eval=FALSE}
+plot(cars)
+```
+Try "zoom", "Export", "Clear All"
+
+_Possible error:_ figure margins too large<br/>
+The Plots tab is too small. Stretch it a little
+
+
+What's cars?
+=======================================================
+incremental:false
+Try
+```{r, eval=FALSE}
+cars
+```
+
+Ok, so where did it come from?
+=======================================================
+incremental: false
+Try
+```{r, eval=FALSE}
+find('cars')
+```
+<g>Note the quotes around the name</g>
+
+Other environments
+=======================================================
+* In the Environment tab, pick "package:datasets" <g>Try opening, double clicking</g>
+* Promises?
+* Environments are searched in order
+* Return to the global environment
+* While you're there, try the list vs grid button on the right
+
+Copying to your Environment
+=======================================================
+incremental: false
+Try
+```{r, eval=FALSE}
+myCars = cars
+```
+Check the global environment. Notice that you can expand
+and browse. <g>And yes, that's how you copy a dataset</g>
+
+More plotting
+=======================================================
+incremental:false
+Try
+```{r, eval=FALSE}
+boxplot(cars)
+```
+Try the arrows to navigate between plots. Try clear all.
+
+Errors
+=======================================================
+type: chapter
+
+Unexpected something
+=======================================================
+incremental: false
+Try each of the following
+```{r, eval=FALSE}
+1 + , 2
+x = (1+2))
+```
+
+Incomplete statement
+=======================================================
+incremental: false
+Try the following
+```{r, eval=FALSE}
+x = 2 *
+```
+
+Use **Esc** to force the current statement to end
+
+Object not found
+=======================================================
+incremental: false
+Try the following
+```{r, eval=FALSE}
+x = 1    # lowercase x
+X        # uppercase X
+```
+Often it's a capitalization issue.
+<g>How do you figure out the correct name?</g>
+
+Could not find function
+=======================================================
+incremental: false
+Try the following
+```{r, eval=FALSE}
+SQRT(2)
+```
+
+But now, start typing `SQR` and look for a hint...
+<p>
+<g> RStudio checks other capitalizations that might match
+what you're looking for.</g>
+</p>
+
+Bad arguments to operator
+=======================================================
+incremental: false
+Try the following
+```{r, eval=FALSE}
+'1' + 1
+```
+
+Investigating Errors
+=======================================================
+* Look for clues in the error message: what part of the line is it complaining about?
+* Look for the obvious: capitalization, extra parens/brackets/braces, extra commas
+* Did you put quotes where they're not needed? or forget them?
+* Try breaking down a complex statement into its individual parts,
+  especially individual variables.<g> use copy/paste</g>
+* Sometimes (when source'ing functions) an unmatched parenthesis can cause an
+  error to be reported many lines later.  These can be hard to spot.
+* It gets easier with practice!
+
+The R Studio Editor
+=======================================================
+type: chapter
+
+Using files
+=======================================================
+incremental: false
+Pick File > New > R Script, or pick "R Script" in the <span style="vertical-align:sub;">![plus icon](img/rstudio1.png)</span> icon.  Write a few lines of R
+
+```{r, eval=FALSE}
+# A simple example
+data(cars)
+boxplot(cars$dist)
+title('Stopping distance (ft)')
+boxplot(cars$speed)
+title('Speed (mph)')
+```
+And save it (File > Save or Ctrl-S)
+
+Note : autoindent, syntax coloring, parenthesis matching
+
+Running code in the editor
+=======================================================
+source: simpleExample.R
+* Method 1: Code > Run Region > Run All
+* Method 2: highlight the lines, press Ctrl-Enter (or click the Run button in
+  the upper right of the editor)
+* Method 3: cursor anywhere in a line, press Ctrl-Enter (execute as single line)
+* Method 4: press the Source button in the upper right of the editor
+* Method 5: Check the "Source on Save button, press Ctrl-S"
+
+Modify your program
+=======================================================
+incremental: false
+Add axis labels
+```{r, eval=FALSE}
+# A simple example
+data(cars)
+boxplot(cars$dist, ylab = "Distance")
+title('Stopping distance (ft)')
+boxplot(cars$speed, ylab = "Speed (mph)")
+title('Speed (mph)')
+```
+Re-run
+
+Modify your program 2
+=======================================================
+incremental: false
+Add the `par()` statement.
+```{r, eval=TRUE}
+# A simple example
+par(mfrow=c(1,2))   # <- add this
+
+data(cars)
+boxplot(cars$dist, ylab = "Distance")
+title('Stopping distance (ft)')
+boxplot(cars$speed, ylab = "Speed (mph)")
+title('Speed (mph)')
+```
+Re-run
+
+Other forms for handling datasets
+=======================================================
+incremental: false
+source: simpleExample_2.R
+```{r, eval=FALSE}
+#
+# a simple example program showing use of attach
+#
+
+data(cars)
+attach(cars)
+boxplot(dist)
+title('Stopping distance (ft)')
+boxplot(speed)
+title('Speed (mph)')
+```
+
+Other forms for handling datasets
+=======================================================
+incremental: false
+source: simpleExample_3.R
+```{r, eval=FALSE}
+#
+# a simple example program showing use of with
+#
+
+with(cars, {
+  boxplot(dist)
+  title('Stopping distance (ft)')
+  boxplot(speed)
+  title('Speed (mph)')
+})
+
+```
+
+Other forms for handling datasets
+=======================================================
+incremental: false
+source: simpleExample_3.R
+```{r, eval=FALSE}
+#
+# showing use of with, with clearer indenting
+#
+
+with(cars, {
+            boxplot(dist)
+            title('Stopping distance (ft)')
+            boxplot(speed)
+            title('Speed (mph)')
+          }
+)
+```
+
+
+Editor vs Console
+=======================================================
+incremental: false
+Most R programmers heavily use both the editor and the console
+
+* The console to experiment and try things
+* The editor to accumulate the stuff that's worth keeping
+
+
+Getting help inside the editor
+=======================================================
+incremental: true
+
+Type-ahead
+* try typing `tit`
+* select `title` from the list, press `TAB`
+
+Function argument help
+* with the cursor inside the parens, press `TAB` again
+  * you should see a list of arguments, with the first one selected
+* press `TAB` again
+  * the editor fills in the argument, waiting for a value.  Type 'abc', then a comma
+* press `TAB` again
+  * notice that the next argument is selected, the first having been consumed
+
+
+Accessing the Help information
+=======================================================
+incremental: false
+* Can be accessed from the console or from the editor <g>Tab key</g>
+* Can be accessed directly in the Help tab
+* Incremental search for commands and functions
+* Search within a help page
+* Navigation arrows
+* Help home, search engine and keywords (try csv)
+
+Using the Help information
+=======================================================
+incremental: false
+* Help is often useless unless you already know what you want
+* Examples!
+
+Look at the help for `boxplot`
+* See Also and Examples can provide hints for what to look for
+* google is great for this
+  * **google** first, then **help** to drill in
+
+The Files tab
+=======================================================
+* Navigating directories
+* Basic file operations
+* The "..." to open a navigation tree
+
+
+Working with R Projects
+=======================================================
+type: chapter
+
+Projects in RStudio
+=======================================================
+* A folder <g>(aka directory)</g> with a .Proj file in it
+* Nice way to keep stuff from different projects separate
+* Easy to switch between projects
+* RStudio remembers what files were open, etc.
+* RStudio resets the environment when you switch projects
+
+Accessing a project
+=======================================================
+* File > New Project
+* Pick Existing directory <g>(=folder)</g>
+  * If you can find `tools` that we worked with before, you can select it
+
+
+R Experiments
+=======================================================
+type: chapter
+
+Creating And Displaying Variables
+=======================================================
+incremental: false
+**In the console:** Enter the name of a variable in the
+console will cause it to display its contents. Try
+```{r, eval=FALSE}
+x = 12
+x
+```
+
+The assignment (=) operator
+=======================================================
+* In the beginning, in S, there was `x <- 1`
+* You could also do `x -> 1`
+* As a shortcut you could also do `x _ 1` (but not anymore!)
+* R eventually replaced the underscore by `x = 1`
+<span style="color:#aaa">There is actually a _very_ subtle difference between them.</span>
+* Most people use = now, but you will find `<-` in older code, S+ code and in the help files.
+
+Examples of assignments
+=======================================================
+incremental: false
+&nbsp;
+```{r, eval=FALSE}
+# these are equivalent
+x <- 10
+10 -> x
+x = 10
+```
+
+Multiple assignments
+=======================================================
+incremental: true
+And you can do the following
+```{r, eval=FALSE}
+x = y = 0
+```
+
+You can do this too
+```{r, eval=FALSE}
+x <- 0 -> y
+```
+But don't
+
+
+Character Values
+=======================================================
+There is no difference between single and double quotes
+```{r, eval=FALSE}
+x = "Hello"
+x
+x = 'Hello'
+x
+```
+
+Variable types
+=======================================================
+The same variable can be character in one place
+and numeric in another
+```{r, eval=FALSE}
+x = "Hello"
+x
+x = 12
+x
+```
+
+More number things
+=======================================================
+Try
+```{r, eval=FALSE}
+2/0
+```
+```{r, eval=FALSE}
+-2/0
+```
+```{r, eval=FALSE}
+2/Inf
+```
+```{r, eval=FALSE}
+Inf+1
+```
+```{r, eval=FALSE}
+Inf-Inf
+```
+
+Missing Values
+=======================================================
+NA is the denotes missing values in R (the "." of SAS won't
+work!)
+```{r, eval=FALSE}
+x = NA
+x
+x+1
+```

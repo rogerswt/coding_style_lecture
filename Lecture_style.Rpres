@@ -1,0 +1,442 @@
+========================================================
+css: rogers_rpres.css
+incremental: true
+<topic>Coding Style</topic>
+<hr>
+<lecture>4</lecture>
+
+Coding Style Suggestions
+=======================================================
+type: chapter
+
+Comments
+=======================================================
+incremental: false
+What follows are style conventions I recommend.  They're a mash-up
+of [Hadley Wickham's style guide](http://adv-r.had.co.nz/Style.html)
+and [Google's style guide](https://google.github.io/styleguide/Rguide.xml)
+(which are only subtley different from each other).
+
+Importantly, they're compatible with RStudio behavior
+* Important, because it's great to have tools to help you do the right thing!
+
+# DISCLAIMER
+I'm guilty of violating a lot of the rules you're about to see.  My style has
+evolved over a long time, is informed by prior experience in other languages
+as well as historical R styles, and not so much by thoughtful development of
+style rules that make sense.  So, thanks for the opportunity to learn from
+teaching!
+
+
+
+File Names
+=======================================================
+incremental: false
+
+File names should end in .R and, of course, be meaningful.
+
+File names cannot contain spaces (kinda obvious).  I use underscores to
+separate words within a file name.
+
+Good:
+```{r, eval=FALSE}
+calculate_CD4_subsets.R
+```
+
+Bad:
+```{r, eval=FALSE}
+stuff.R
+calculate CD4 subsets.R
+```
+
+Variable Names
+=======================================================
+incremental: false
+
+Variable naming is easy to do, but hard to do ___well___.
+
+<small>
+“There are only two hard things in Computer Science: cache invalidation and
+naming things.”
+— Phil Karlton
+</small>
+
+<small>
+There are several schools of thought regarding conventions for variable and
+function names.  Generally there are 4 ways that people delineate words within
+a variable or function name.  They are:
+
+* _  (as in, `average_value`)
+* .  (as in, `average.value`)
+* lower camelCase (as in, `averageValue`)
+* upper CamelCase (as in, `AverageValue`)
+
+In the old days of R, the period was used (underscore was illegal since it was a
+synonym for the assignment operator on old ASR33 teletype machines; the
+ASCII code for underscore was actually printed as a backarrow).  That's no longer
+the case.  Meanwhile, in other languages, the period signifies an object/structure
+relationship.  Furthermore, it can cause ambiguity with S3 methods.
+</small>
+
+
+Variable and Function Names
+=======================================================
+incremental: false
+
+After giving this much thought, here are my recommendations
+(and reasons for them)
+
+**Variables**
+<small>
+* Use the underscore as the preferred word delimiter
+* Use _lower_ camelCase as an alternate
+* Avoid the period
+* _Always_ start a variable name with a lower case letter
+
+</small>
+**Functions**
+<small>
+* Use the underscore as the preferred word delimiter
+* use _upper_ CamelCase as an alternate
+* Avoid the period
+* _Always_ start a function name with an upper case letter
+
+</small>
+
+Variable and Function Names
+=======================================================
+incremental: false
+
+Using this scheme, variable and function names cannot be confused.
+
+Good:
+```{r, eval=FALSE}
+n_cd4_events = Count_CD4_in_flowset(fs=my_flowset)
+```
+
+Ok:
+```{r, eval=FALSE}
+nEvents = CountEventsInFlowset(fs=my_flowset)
+```
+
+Bad:
+```{r, eval=FALSE}
+n_cd4_events = count_CD4_in_flowset(fs=my_flowset)
+N_cd4_events = 10000
+```
+<small>
+Generally, variable names should be ___nouns___ and function names
+should be ___verbs___. Strive for names that are concise and meaningful.
+</small>
+
+Variable Names
+=======================================================
+incremental: false
+
+Where possible, avoid using names of existing functions and variables. This will
+cause confusion for the readers of your code.
+
+```{r, eval=FALSE}
+T <- FALSE
+c <- 10
+mean <- function(x) sum(x)
+```
+
+<g>Hint: if in doubt, try typing the function or variable name in your console
+to see if it already has a definition (at least in the current scope).</g>
+
+Syntax
+=======================================================
+type: chapter
+
+Spacing
+=======================================================
+incremental: false
+
+Place spaces around all __infix__ operators (=, +, -, <-, etc.).
+
+The same rule applies when using '=' in function calls.
+
+Always put a space after a comma, and never before (just
+like in regular English).
+
+<small>
+Good:
+```{r, eval=FALSE}
+average <- mean(feet / 12 + inches, na.rm = TRUE)
+```
+
+Bad:
+```{r, eval=FALSE}
+average<-mean(feet/12+inches,na.rm=TRUE)
+```
+
+Exception: you can omit spacing around '=' in function _definition_.
+```{r, eval=FALSE}
+MyFunc = function (coefficient, exponent=6)
+```
+</small>
+
+Spacing
+=======================================================
+incremental: false
+
+There’s a small exception to this rule:
+
+:, :: and ::: don’t need spaces around them.
+
+Good:
+```{r, eval=FALSE}
+x <- 1:10
+base::get
+```
+
+Bad:
+```{r, eval=FALSE}
+x <- 1 : 10
+base :: get
+```
+
+Spacing
+=======================================================
+incremental: false
+
+Place a space before left parentheses, except in a function call.
+
+Good:
+```{r, eval=FALSE}
+if (debug) do(x)
+plot(x, y)
+```
+
+Bad:
+```{r, eval=FALSE}
+if(debug)do(x)
+plot (x, y)
+```
+
+Spacing
+=======================================================
+incremental: false
+
+Extra spacing (i.e., more than one space in a row) is ok if it improves alignment
+of assignments.
+
+```{r, eval=FALSE}
+list(
+  total  = a + b + c,
+  mean   = (a + b + c) / n,
+  median = median(c(a, b, c))
+)
+```
+
+Curly Braces
+=======================================================
+incremental: false
+
+An opening curly brace should __never__ go on its own line and should always be
+followed by a new line.
+
+A closing curly brace should __always__ go on its own
+line, unless it’s followed by `else`.
+
+Always indent the code inside curly braces.
+
+Curly Braces
+=======================================================
+incremental: false
+
+Good:
+```{r, eval=FALSE}
+if (y < 0 && debug) {
+  message("Y is negative")
+}
+
+if (y == 0) {
+  log(x)
+} else {
+  y ^ x
+}
+```
+
+Bad:
+```{r, eval=FALSE}
+if (y < 0 && debug)
+message("Y is negative")
+
+if (y == 0) {
+  log(x)
+}
+else {
+  y ^ x
+}
+```
+
+
+Curly Braces
+=======================================================
+incremental: false
+
+It’s ok to leave very short statements on the same line:
+```{r, eval=FALSE}
+if (y < 0 && debug) message("Y is negative")
+```
+
+or
+```{r, eval=FALSE}
+if (y < 0 && debug) {message("Y is negative")}
+```
+
+But, please be consistent (either always use curly braces in
+such a case, or never do, but don't mix them).
+
+<g> I like to use them - it
+appears more explicitly to be a code block to my eye.</g>
+
+Line Length
+=======================================================
+incremental: false
+
+Strive to limit your code to 80 characters per line. This fits comfortably on a
+printed page with a reasonably sized font.
+
+If you find yourself running out of room, this is a good indication that you
+should encapsulate some of the work in a separate function.
+
+
+Indentation
+=======================================================
+incremental: false
+
+Use the tab character to indent your code.
+
+The exception is if a function definition or other long parenthesized expression
+runs over multiple lines. In that case, indent the second line to where the
+definition starts:
+
+
+```{r, eval=FALSE}
+long.function.name <- function(a = "a super long argument",
+                               b = "another argument",
+                               c = "another argument") {
+  # The code inside the function is indented as usual.
+}
+```
+
+Use RStudio IDE Tools to Advantage
+=======================================================
+incremental: false
+<center>
+![code_prefs_1](img/prefs_1.tiff)
+</center>
+
+Use RStudio IDE Tools to Advantage
+=======================================================
+incremental: false
+
+<center>
+![code_prefs_1](img/prefs_2.tiff)
+</center>
+
+Use RStudio IDE Tools to Advantage
+=======================================================
+incremental: false
+
+<center>
+![code_prefs_1](img/prefs_3.tiff)
+</center>
+
+Use RStudio IDE Tools to Advantage
+=======================================================
+incremental: false
+
+<center>
+![code_prefs_1](img/prefs_4.tiff)
+</center>
+
+Use RStudio IDE Tools to Advantage
+=======================================================
+incremental: false
+
+<center>
+![code_prefs_1](img/prefs_5.tiff)
+</center>
+
+Your turn
+=======================================================
+incremental: false
+
+<small>
+Use what you've learned to improve this code.
+</small>
+```{r, eval=FALSE}
+time.slice = function (ff, nbin=96) {
+  if (is(ff) != "flowFrame") {
+    stop ("ff must be a single flowFrame")
+  }
+
+  nevents = nrow(ff)
+
+  cuts = floor (seq (1, nevents, length=(nbin+1)))
+  flist = list()
+  bin.indices = list()
+  for (i in 1:nbin)
+  {
+    start = cuts[i]
+    end = cuts[i+1]
+    flist[[i]] = new ("flowFrame", parameters=parameters(ff), description=description(ff))
+    exprs(flist[[i]]) = exprs(ff)[start:end,]
+    bin.indices[[i]] = start:end
+  }
+  names(flist) = paste ("slice_", 1:nbin, sep="")
+  fs = flowSet (flist)
+
+  return (list(fs=fs, bin.indices=bin.indices))
+}
+```
+
+Your turn
+=======================================================
+incremental: false
+
+<small>
+You should have ended up with something like this.
+</small>
+
+<smallest>
+```{r, eval=FALSE}
+#
+# Example of a cleaned-up version of the time-slicing program
+#
+# 2017-04-24 WTR
+
+SliceTime = function(ff, nbin = 96) {
+  if (is(ff) != "flowFrame") {
+    stop("ff must be a single flowFrame")
+  }
+
+  n_events = nrow(ff)
+
+  cuts = floor(seq(1, n_events, length = (nbin + 1)))
+  flist = list()
+  bin_indices = list()
+  for (i in 1:nbin) {
+    start = cuts[i]
+    end = cuts[i + 1]
+    flist[[i]] = new("flowFrame",
+                     parameters = parameters(ff),
+                     description = description(ff))
+
+    exprs(flist[[i]]) = exprs(ff)[start:end,]
+    bin_indices[[i]] = start:end
+  }
+  names(flist) = paste("slice_", 1:nbin, sep = "")
+  fs = flowSet(flist)
+
+  return(list(fs = fs, bin_indices = bin_indices))
+}
+
+```
+</smallest>
+
+

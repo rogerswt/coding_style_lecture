@@ -1,0 +1,209 @@
+========================================================
+css: rogers_rpres.css
+incremental: true
+<topic>Working with Datasets</topic>
+<hr>
+<lecture>4</lecture>
+
+Working with Datasets
+=======================================================
+type: chapter
+
+R vs SAS datasets
+=======================================================
+* R calls them data frames
+* Variables of different types <g>(More data types in R)</g>
+* No variable labels in R <g>at least not by default</g>
+
+Built-in datasets
+=======================================================
+incremental: false
+What do you think this will do?
+
+```{r, eval=FALSE}
+cars
+```
+
+How about:
+```{r, eval=FALSE}
+airquality
+```
+
+Do any of these show up in the Environment? Where are they?
+
+The airquality dataset
+=======================================================
+incremental: false
+Try
+```{r, eval=FALSE}
+ds = airquality
+```
+Check the environment
+
+Using the same name
+=======================================================
+incremental: false
+Try
+```{r, eval=FALSE}
+airquality = airquality
+```
+What happened? what does the following show?
+```{r, eval=FALSE}
+find('airquality')
+```
+
+Errors
+=======================================================
+incremental: false
+What will the following do?
+```{r, eval=FALSE}
+# no quotes
+find(airquality)
+
+# no quotes and mispelled
+find(Airquality)
+
+# quotes, misspelled
+find('Airquality')
+```
+
+
+Quick looks at a dataset
+=======================================================
+incremental: false
+Try
+```{r, eval=FALSE}
+summary(car)
+summary(airquality)
+```
+
+
+A quick plot
+=======================================================
+incremental: false
+Try
+```{r, eval=FALSE}
+plot(cars)
+```
+
+Another quick plot
+=======================================================
+incremental: false
+Try
+```{r, eval=FALSE}
+plot(airquality)
+```
+
+Working with Variables
+=======================================================
+type: chapter
+
+The $ notation
+=======================================================
+incremental: false
+The full name of a variable is:
+
+dataset-name$variable name
+
+```{r, eval=FALSE}
+hist(airquality$Ozone)
+```
+
+The $ notation
+=======================================================
+incremental: false
+What will this do?
+
+```{r, eval=FALSE}
+airquality$Temp
+```
+
+What about (temp is capitalized incorrectly)
+
+```{r, eval=FALSE}
+airquality$temp
+```
+
+Spelling errors with $ notation
+=======================================================
+incremental: false
+Returns NULL, not an error message. But this can
+cause an error message in some functions. Try:
+
+```{r, eval=FALSE}
+hist(airquality$temp)
+boxplot(airquality$temp)
+```
+
+Tab is your friend
+=======================================================
+incremental: false
+* Type `hist(air` press tab
+* Complete it, then enter $: `hist(airq$` and press tab
+
+Plotting two variables
+=======================================================
+```{r, eval=FALSE}
+plot(airquality$Ozone ~ airquality$Temp)
+```
+
+Working with Variables Another Option
+=======================================================
+type: chapter
+
+The with() function
+=======================================================
+incremental: false
+The general form of the `with` function is:
+
+```{r, eval=FALSE}
+with(dataset-name, {
+
+  ... commands ...
+
+})
+```
+<g>Note the braces {} that enclose the commands</g>
+
+Example
+=======================================================
+incremental: false
+For example,
+
+```{r, eval=FALSE}
+with(airquality, {
+  # 2x2 grid
+  par(mfrow=c(2,2))
+
+  # four plots
+  hist(Ozone)
+  hist(Temp)
+  hist(Solar.R)
+  plot(Ozone~Temp)
+})
+```
+
+Errors
+=======================================================
+incremental: false
+```{r, eval=FALSE}
+with(airquality, {
+  # 2x2 grid
+  par(mfrow=c(2,2))
+
+  # four plots
+  hist(Ozone)
+  hist(temp)
+  hist(Solar.R)
+  plot(Ozone~Temp)
+})
+```
+
+with() or $?
+=======================================================
+incremental: false
+* It's a matter of taste
+* Too many $ add clutter, so for long sequences with() is easier
+* with() can be clumsy for a single statement
+* $ used in other situations (more later!)
+
