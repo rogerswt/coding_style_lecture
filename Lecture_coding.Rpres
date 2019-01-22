@@ -76,7 +76,7 @@ x = (1 + 2
 
 Backslashes (\)
 =======================================================
-These have special meanings (more on this later). For file names, use forward slashes (/) instead. If you must use them, you have to double them:
+These have special meanings (more on this later). For file names, use forward slashes (/) instead. If you must use backslashes, you have to double them:
 ```{r, eval=FALSE}
 # Good
 C:/My Documents/test.csv
