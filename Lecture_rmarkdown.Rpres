@@ -249,7 +249,7 @@ Images
 incremental: false
 An image works the same way, except that it is preceded by an exclamation mark (!)
 
-![GWU](http://my.gwu.edu/images/themes/mygw.gif)
+![spclogo](graphic_6_opaque_small.png)
 
 Note: You can also include files on your disk. Just put the path instead of a URL.
 
@@ -325,6 +325,6 @@ Assuming you've cloned the coding_style_lecture project from GitHub,
 * Knit it (I'm having good luck with Word)
 * Follow the instructions, create your Rmarkdown document
     * Remember, you can try code in the console and copy it to the code chunk in your document
-* Email your result to [wade.rogers@cytovas.com](mailto:wade.rogers@cytovas.com)
+* Email your result to [wade.rogers@spcytomics.com](mailto:wade.rogers@spcytomics.com)
 
 
