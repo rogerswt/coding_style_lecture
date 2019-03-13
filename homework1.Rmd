@@ -1,9 +1,10 @@
 ---
 title: "Homework Assignment 1"
 author: "Wade Rogers"
-date: "April 24, 2017"
+date: "March 14, 2019"
 output:
   word_document: default
+  pdf_document: default
   html_document: default
 ---
 
@@ -39,7 +40,10 @@ what species, which markers, etc.)
 Execute your code in a code chunk of your Rmarkdown document, with echo=true so that the
 script code will be displayed.
 
-Finally, Knit your document (Word if you have it on your computer, HTML or PDF if you do not), and
-email the resulting document to me.
+Finally, Knit your document (Word if you have it on your computer, HTML or PDF 
+if you do not), and email the resulting document to me (wade.rogers@spcytomics.com).
+
+Please remember that I'll be away next week.  I will give feedback at the beginning 
+of our next session on March 28.
 
 

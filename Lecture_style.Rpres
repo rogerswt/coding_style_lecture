@@ -76,11 +76,11 @@ a variable or function name.  They are:
 * lower camelCase (as in, `averageValue`)
 * upper CamelCase (as in, `AverageValue`)
 
-In the old days of R, the period was used (underscore was illegal since it was a
+In the merry old days of R, the period was used (underscore was illegal since it was a
 synonym for the assignment operator on old ASR33 teletype machines; the
 ASCII code for underscore was actually printed as a backarrow).  That's no longer
 the case.  Meanwhile, in other languages, the period signifies an object/structure
-relationship.  Furthermore, it can cause ambiguity with S3 methods.
+relationship.  However, it’s use is still widespread (including by me), and I won’t overly discourage it.
 </small>
 
 
@@ -95,7 +95,8 @@ After giving this much thought, here are my recommendations
 <small>
 * Use the underscore as the preferred word delimiter
 * Use _lower_ camelCase as an alternate
-* Avoid the period
+* Avoid the period, unless you have a good reason
+
 * _Always_ start a variable name with a lower case letter
 
 </small>
@@ -103,7 +104,8 @@ After giving this much thought, here are my recommendations
 <small>
 * Use the underscore as the preferred word delimiter
 * use _upper_ CamelCase as an alternate
-* Avoid the period
+* Avoid the period, unless you have a good reason
+
 * _Always_ start a function name with an upper case letter
 
 </small>
@@ -317,7 +319,7 @@ Strive to limit your code to 80 characters per line. This fits comfortably on a
 printed page with a reasonably sized font.
 
 If you find yourself running out of room, this is a good indication that you
-should encapsulate some of the work in a separate function.
+should encapsulate some of the work in a separate function, or break a complex expression into several pieces.
 
 
 Indentation
@@ -336,6 +338,7 @@ long.function.name <- function(a = "a super long argument",
                                b = "another argument",
                                c = "another argument") {
   # The code inside the function is indented as usual.
+  res = paste(c(a, b, c), collapse = " : ")
 }
 ```
 
