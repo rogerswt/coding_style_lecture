@@ -3,9 +3,9 @@ title: "Homework Assignment 1"
 author: "Wade Rogers"
 date: "March 14, 2019"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
